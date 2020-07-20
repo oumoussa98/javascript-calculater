@@ -1,0 +1,60 @@
+* 
+    box-sizing: border-box
+    font-family: Gotham Rounded, sans-serif
+    font-size: 25px
+body 
+    padding: 0
+    margin: 0
+main 
+    display: grid
+    grid-gap: 2px
+    justify-content: center
+    align-content: center
+    min-height: 100vh
+    grid-template-columns: repeat(4, 100px)
+    grid-template-rows: minmax(120px, auto) repeat(5, 80px)
+
+    .output 
+        grid-column: 1 / -1
+        border-radius: 6px
+        background: #dddada
+        display: flex
+        align-items: flex-end
+        justify-content: space-around
+        flex-direction: column
+        padding: 8px
+        word-wrap: break-word
+        word-break: break-all
+        .answer
+            position: relative
+            width: 100%
+            height: 100%
+            &::after
+                content: attr(data-after)
+                padding: 5px
+                position: absolute
+                top: 2px
+                right: 2px
+                min-width: 100px
+                height: 30px
+            input
+                width: 100%
+                height: 100%
+                padding: 10px 10px 5px 10px
+                outline: none
+                border: none
+            &:focus
+                outline: none
+    button 
+        cursor: pointer
+        border: none
+        outline: none
+        background: #e0e0e4
+        border-radius: 6px
+    .operators 
+        background: #c2c0c0
+    .ac,.zero,.equal
+        grid-column: span 2
+    .equal 
+        background: #5e99f1
+    
