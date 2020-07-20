@@ -83,8 +83,16 @@ main button {
   border-radius: 6px;
 }
 
+main button:hover {
+  background: #d9d9dd;
+}
+
 main .operators {
   background: #c2c0c0;
+}
+
+main .operators:hover {
+  background: #b6b4b4;
 }
 
 main .ac, main .zero, main .equal {
@@ -93,5 +101,9 @@ main .ac, main .zero, main .equal {
 
 main .equal {
   background: #5e99f1;
+}
+
+main .equal:hover {
+  background: #4c8ef1;
 }
 /*# sourceMappingURL=style.css.map */
