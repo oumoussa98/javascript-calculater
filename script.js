@@ -44,13 +44,38 @@ function handleCalculations() {
 			numbers.push(parseInt(statement));
 		}
 	}
+	console.log(numbers);
 	// get the answer
 	calculate(numbers, operators);
 	// display the answer
+	console.log(numbers);
+	console.log(operators);
+
 	displayAnswer(answer);
 }
 
 function calculate(numbers, operators) {
+	// priority for * and /
+	for (i = 0; i < numbers.length; i++) {
+		switch (operators[i]) {
+			case "*":
+				answer = numbers[i] * numbers[i + 1];
+				numbers[i] = answer;
+				numbers.splice(i + 1, 1);
+				operators.splice(i, 1);
+				i--;
+
+				break;
+			case "/":
+				answer = numbers[i] / numbers[i + 1];
+				numbers[i] = answer;
+				numbers.splice(i + 1, 1);
+				operators.splice(i, 1);
+				i--;
+				break;
+		}
+	}
+	// then + and -
 	for (i = 0; i < numbers.length; i++) {
 		switch (operators[i]) {
 			case "+":
@@ -67,22 +92,6 @@ function calculate(numbers, operators) {
 					previousValue = answer = previousValue - numbers[i + 1];
 				}
 				break;
-			case "*":
-				if (i === 0) {
-					answer = previousValue = numbers[i] * numbers[i + 1];
-				} else {
-					previousValue = answer = previousValue * numbers[i + 1];
-				}
-				break;
-			case "/":
-				if (i === 0) {
-					answer = previousValue = numbers[i] / numbers[i + 1];
-				} else {
-					previousValue = answer = previousValue / numbers[i + 1];
-				}
-				break;
-			default:
-				error = "Syntax error invalid operator type";
 		}
 	}
 }
