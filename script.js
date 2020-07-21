@@ -44,13 +44,10 @@ function handleCalculations() {
 			numbers.push(parseInt(statement));
 		}
 	}
-	console.log(numbers);
+
 	// get the answer
 	calculate(numbers, operators);
 	// display the answer
-	console.log(numbers);
-	console.log(operators);
-
 	displayAnswer(answer);
 }
 
