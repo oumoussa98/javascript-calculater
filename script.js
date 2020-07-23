@@ -56,19 +56,10 @@ function handleCalculations() {
 			numbers.push(parseInt(statement));
 		}
 	}
-<<<<<<< HEAD
-	console.log(numbers);
-	console.log(operators);
-	// get the answer
-	calculate(numbers, operators);
-	// display the answer
-
-=======
 
 	// get the answer
 	calculate(numbers, operators);
 	// display the answer
->>>>>>> a0b540e98c652f4e5e28569a6b891b8185d0a828
 	displayAnswer(answer);
 }
 
