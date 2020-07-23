@@ -2,6 +2,7 @@
 let answer = null;
 let error = null;
 let operators = [];
+let pass = true;
 
 // this variable holds the first number in the array numbers before pushing it
 let numbersString = null;
@@ -21,19 +22,30 @@ function handleCalculations() {
 		// reset
 		numbersString = "";
 		statementString = "";
+
 		if (
 			statement[i] === "+" ||
 			statement[i] === "-" ||
 			statement[i] === "*" ||
 			statement[i] === "/"
 		) {
+			if (
+				statement[i + 1] === "+" ||
+				statement[i + 1] === "-" ||
+				statement[i + 1] === "*" ||
+				statement[i + 1] === "/"
+			)
+				break;
+			// check for the first string if it's an operator of type - or +
+			if (pass && (statement[0] === "+" || statement[0] === "-")) {
+				pass = false;
+				continue;
+			}
 			operators.push(statement[i]);
-
 			for (let k = 0; k < i; k++) {
 				numbersString = numbersString.concat(statement[k]);
 			}
 			numbers.push(parseInt(numbersString));
-
 			for (let j = i + 1; j < statement.length; j++) {
 				statementString = statementString.concat(statement[j]);
 			}
@@ -45,11 +57,10 @@ function handleCalculations() {
 		}
 	}
 	console.log(numbers);
+	console.log(operators);
 	// get the answer
 	calculate(numbers, operators);
 	// display the answer
-	console.log(numbers);
-	console.log(operators);
 
 	displayAnswer(answer);
 }
@@ -104,14 +115,15 @@ function reset() {
 	statementString = null;
 	numbers = [];
 	previousValue = null;
+	pass = true;
 }
 
 function displayAnswer(answer) {
-	if (isNaN(answer) || !answer) {
+	if (isNaN(answer) || answer === null) {
 		answer = "syntax error";
 	}
 	let el = document.querySelector(".answer");
-	el.setAttribute("data-after", "ans = " + answer);
+	el.setAttribute("data-after", answer);
 }
 
 function append(string) {
