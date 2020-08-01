@@ -95,7 +95,7 @@ main .operators:hover {
   background: #b6b4b4;
 }
 
-main .ac, main .zero, main .equal {
+main .ac, main .equal {
   grid-column: span 2;
 }
 
