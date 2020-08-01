@@ -45,7 +45,7 @@ function handleCalculations() {
 			for (let k = 0; k < i; k++) {
 				numbersString = numbersString.concat(statement[k]);
 			}
-			numbers.push(parseInt(numbersString));
+			numbers.push(parseFloat(numbersString));
 			for (let j = i + 1; j < statement.length; j++) {
 				statementString = statementString.concat(statement[j]);
 			}
@@ -53,7 +53,7 @@ function handleCalculations() {
 			i = 0;
 		}
 		if (i === statement.length - 1) {
-			numbers.push(parseInt(statement));
+			numbers.push(parseFloat(statement));
 		}
 	}
 
